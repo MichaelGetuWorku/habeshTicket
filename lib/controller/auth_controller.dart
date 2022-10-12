@@ -8,6 +8,7 @@ import 'package:login/api/login.dart';
 import 'package:login/model/login.dart';
 import 'package:login/screen/bottom_bar.dart';
 import 'package:login/screen/login_page.dart';
+import 'package:login/screen/verify_email.dart';
 
 class AuthController extends GetxController {
   // the AuthController will be globally available
@@ -66,7 +67,7 @@ class AuthController extends GetxController {
       jwt = smt.data.jwt;
       print(jwt);
       return Get.offAll(
-        () => const BottomBar(),
+        () => VerifyEmail(),
       );
     }
   }
