@@ -241,6 +241,10 @@ class TicketScreen extends StatelessWidget {
                                       .tickets[i].event.eventStartTime;
                                   var description = snapshot.data!.data[index]
                                       .tickets[i].event.eventDescription;
+                                  var location = snapshot.data!.data[index]
+                                      .tickets[i].stadium.location;
+                                  var stadiumCityName = snapshot.data!
+                                      .data[index].tickets[i].stadium.name;
                                   var dis = GetDescriptionEvent.fromJson(
                                       jsonDecode(description));
                                   return Container(
@@ -318,12 +322,16 @@ class TicketScreen extends StatelessWidget {
                                                           builder: (context) =>
                                                               GenerateScreen(
                                                             ticketQr: ticketQr,
+                                                            location: location,
+                                                            stadiumCityName:
+                                                                stadiumCityName,
                                                           ),
                                                         ),
                                                       );
                                                     },
                                                     child: const Text(
-                                                        "Generate Qr.Code"),
+                                                      "Generate Qr.Code",
+                                                    ),
                                                   ),
                                                   TextButton(
                                                     child: const Text(

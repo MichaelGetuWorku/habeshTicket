@@ -6,14 +6,19 @@ import 'package:login/screen/bottom_bar.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
 import 'package:login/utils/fab.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 // import 'package:path_provider/path_provider.dart';
 
 class GenerateScreen extends StatefulWidget {
   final String ticketQr;
+  final String location;
+  final String stadiumCityName;
   const GenerateScreen({
     Key? key,
     required this.ticketQr,
+    required this.location,
+    required this.stadiumCityName,
   }) : super(key: key);
 
   @override
@@ -29,16 +34,31 @@ class GenerateScreenState extends State<GenerateScreen> {
   late String _inputErrorText = '';
 
   late final String _dataString = widget.ticketQr;
+
+  showMap() async {
+    final maps = await MapLauncher.installedMaps;
+    var first = widget.location.split(',').first;
+    var last = widget.location.split(',').last;
+    var longitude = double.parse(last);
+    var latitude = double.parse(first);
+    await maps.first.showMarker(
+      coords: Coords(latitude, longitude),
+      title: widget.stadiumCityName,
+      zoom: 50,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const FAB(),
       body: _contentWidget(),
     );
   }
 
   _contentWidget() {
-    final bodyHeight = MediaQuery.of(context).size.height -
-        MediaQuery.of(context).viewInsets.bottom;
+    // final bodyHeight = MediaQuery.of(context).size.height -
+    MediaQuery.of(context).viewInsets.bottom;
     return Container(
       color: Styles.bgColor,
       child: Column(
@@ -60,12 +80,11 @@ class GenerateScreenState extends State<GenerateScreen> {
               right: 10.0,
               bottom: _topSectionBottomPadding,
             ),
-            child: Container(
+            child: SizedBox(
               height: _topSectionHeight,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [],
               ),
             ),
           ),
@@ -118,6 +137,10 @@ class GenerateScreenState extends State<GenerateScreen> {
               );
             },
             child: const Text('Navigate to home!'),
+          ),
+          TextButton(
+            onPressed: showMap,
+            child: const Text('Show in Map'),
           ),
         ],
       ),

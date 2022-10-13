@@ -1,16 +1,12 @@
 // ignore_for_file: avoid_print
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:login/api/get_event.dart';
-import 'package:login/model/get_details.dart';
 import 'package:login/model/get_event.dart';
 import 'package:login/screen/single_ticket.dart';
-import 'package:login/utils/const.dart';
 import 'package:login/widgets/ticket_view.dart';
-import 'package:http/http.dart' as http;
 
 class ThisWeekScreen extends StatefulWidget {
   const ThisWeekScreen({
@@ -22,6 +18,34 @@ class ThisWeekScreen extends StatefulWidget {
 }
 
 class _ThisWeekScreenState extends State<ThisWeekScreen> {
+  late Future<GetEvent> futureEvents;
+  @override
+  void initState() {
+    super.initState();
+    futureEvents = fetchEvent();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RefreshIndicator(
+      onRefresh: _pullRefresh,
+      child: _events(),
+    );
+  }
+
+  Future<void> _pullRefresh() async {
+    Future<GetEvent> futureLedger = fetchEvent();
+    setState(() {
+      futureEvents = Future.value(futureLedger);
+    });
+  }
+}
+
+class _events extends StatelessWidget {
+  const _events({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<GetEvent>(

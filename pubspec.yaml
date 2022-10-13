@@ -49,6 +49,7 @@ dependencies:
   firebase_storage: ^10.3.10
   quickalert: ^1.0.0
   loading_animation_widget: ^1.2.0+3
+  map_launcher: ^2.4.0
 
 dev_dependencies:
   flutter_test:
