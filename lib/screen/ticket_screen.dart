@@ -217,6 +217,8 @@ class TicketScreen extends StatelessWidget {
                                       .data[index].tickets[i].stadium.name;
                                   var dis = GetDescriptionEvent.fromJson(
                                       jsonDecode(description));
+                                  var otherEvent = dis.eventDescriptionText;
+
                                   return Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 15,
@@ -274,8 +276,10 @@ class TicketScreen extends StatelessWidget {
                                           mainName: 'Type',
                                           secondaryName: dis.type.toUpperCase(),
                                           number: 'Event Type',
-                                          secondaryNum:
-                                              '${dis.awayTeam?.name} Vs ${dis.homeTeam?.name}',
+                                          secondaryNum: dis.awayTeam?.name ==
+                                                  null
+                                              ? otherEvent
+                                              : '${dis.homeTeam?.name} Vs ${dis.awayTeam?.name}',
                                         ),
                                         lastScannedOn == '-'
                                             ? Row(

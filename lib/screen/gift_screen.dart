@@ -66,6 +66,8 @@ class GiftScreen extends StatelessWidget {
                               .data!.data.transactions[index].toAccountNo;
                           var type =
                               snapshot.data!.data.transactions[index].type;
+                          var stadiumName =
+                              snapshot.data!.data.transactions[index];
 
                           return Container(
                             padding: const EdgeInsets.symmetric(
@@ -113,14 +115,8 @@ class GiftScreen extends StatelessWidget {
                                 CommonLayout(
                                   mainName: 'To Account No',
                                   secondaryName: toAccountNo,
-                                  number: 'City',
-                                  secondaryNum: 'stadiumName',
-                                ),
-                                CommonLayout(
-                                  mainName: 'Time',
-                                  secondaryName: formattedTime,
-                                  number: 'Received',
-                                  secondaryNum: 'TRUE',
+                                  number: 'Time',
+                                  secondaryNum: formattedTime,
                                 ),
                                 const Gap(20),
                               ],
