@@ -38,7 +38,7 @@ class SelectSeats extends StatelessWidget {
                 height: 270,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  // color: Colors.tealAccent,
+                  color: Colors.grey.shade300,
                   image: const DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage("assets/images/seats.jpg"),

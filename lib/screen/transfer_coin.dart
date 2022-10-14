@@ -7,6 +7,7 @@ import 'package:login/api/transfer.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
 import 'package:login/utils/fab.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/widgets/commonLayout.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -253,9 +254,7 @@ class TransferCoin extends StatelessWidget {
                       );
                     }
                   }
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const LoadingWidget();
                 },
               )
             ],

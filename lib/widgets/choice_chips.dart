@@ -177,12 +177,12 @@ class _ChoiceChipsState extends State<ChoiceChips> {
                           ticketType,
                           quantity,
                         );
-                      _showDialog(
-                                context,
-                                res.error,
-                                res.errorMsg,
-                                quantity,
-                              );
+                        _showDialog(
+                          context,
+                          res.error,
+                          res.errorMsg,
+                          quantity,
+                        );
                       },
                     ),
                   ),
@@ -214,7 +214,7 @@ class _ChoiceChipsState extends State<ChoiceChips> {
                   .eventTickets
                   .map(
                     (e) => ChoiceChip(
-                      // selectedColor: Colors.amber,
+                      selectedColor: Colors.blue.shade300,
                       label: Container(
                         width: 250,
                         height: 50,
@@ -269,13 +269,6 @@ class _ChoiceChipsState extends State<ChoiceChips> {
             ActionButton(
               name: 'Proceed to Pay',
               action: () {
-                print(
-                  ticketType,
-                );
-                print(
-                  qualityController.text,
-                );
-                print(widget.eventId);
                 // buyTicket(
                 //   widget.eventId,
                 //   ticketType,

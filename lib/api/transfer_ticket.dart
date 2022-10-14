@@ -25,7 +25,7 @@ Future<TransferTicket> transferTicket(
     body: body,
   );
 
-  print(response.body);
+  // print(response.body);
 
   if (response.statusCode == 200 || response.statusCode == 400) {
     return TransferTicket.fromJson(jsonDecode(response.body));

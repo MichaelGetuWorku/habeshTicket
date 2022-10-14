@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:login/utils/loading_widet.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -7,15 +7,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: double.maxFinite,
-      // height: double.maxFinite,
       color: Colors.white,
-      child: Center(
-        child: LoadingAnimationWidget.inkDrop(
-          color: Colors.red,
-          size: 50,
-        ),
-      ),
+      child: const LoadingWidget(),
     );
   }
 }

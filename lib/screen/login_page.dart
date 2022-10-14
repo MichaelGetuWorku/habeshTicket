@@ -5,6 +5,8 @@ import 'package:login/screen/forgot_password.dart';
 import 'package:login/screen/signin_with_phone.dart';
 import 'package:login/screen/signup_page.dart';
 import 'package:flutter/gestures.dart';
+import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/utils/signin.dart';
 
 import '../controller/auth_controller.dart';
@@ -38,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -316,41 +318,31 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(height: 80),
-            loading
-                ? Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.red,
-                      size: 50,
-                    ),
-                  )
-                : ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        setState(() {
-                          loading = true;
-                        });
-                        return AuthController.instance.login(
-                          emailController.text.trim(),
-                          passwordController.text.trim(),
-                        );
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.purple,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 50,
-                        vertical: 10,
-                      ),
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        // fontWeight: FontWeight.w400,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: const Text('Sign in'),
-                  ),
+            ElevatedButton(
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  return AuthController.instance.login(
+                    emailController.text.trim(),
+                    passwordController.text.trim(),
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue.shade400,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 50,
+                  vertical: 10,
+                ),
+                textStyle: const TextStyle(
+                  fontSize: 30,
+                  // fontWeight: FontWeight.w400,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text('Sign in'),
+            ),
             SizedBox(height: h * 0.08),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -393,12 +385,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 loading2
-                    ? Center(
-                        child: LoadingAnimationWidget.inkDrop(
-                          color: Colors.red,
-                          size: 50,
-                        ),
-                      )
+                    ? const LoadingWidget()
                     : signin(
                         action: () {
                           setState(() {

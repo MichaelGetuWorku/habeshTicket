@@ -25,6 +25,7 @@ class AccountDetails extends StatelessWidget {
         FirebaseFirestore.instance.collection('Users');
     return Scaffold(
       floatingActionButton: const FAB(),
+      backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(
@@ -34,38 +35,6 @@ class AccountDetails extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Center(
-              //   child: Stack(
-              //     children: [
-              //       const CircleAvatar(
-              //         backgroundColor: Colors.redAccent,
-              //         maxRadius: 100,
-              //       ),
-              //       Positioned(
-              //         top: 110,
-              //         left: 150,
-              //         // width: 250,
-              //         // height: 250,
-              //         child: IconButton(
-              //           onPressed: () async {
-              //             final data = await showModalBottomSheet(
-              //                 context: context,
-              //                 builder: (ctx) {
-              //                   return GetImage();
-              //                 });
-              //             print('!!!!!!!!!!!!!!!!!!!');
-              //             print(data);
-              //           },
-              //           icon: const Icon(
-              //             Icons.add_a_photo,
-              //             size: 50,
-              //           ),
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              // Gap(AppLayout.getHeight(40)),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 10,
@@ -108,39 +77,7 @@ class AccountDetails extends StatelessWidget {
                   )
                 ],
               ),
-              // Row(
-              //   children: [
-              //     TextField(
-              //       controller: nameController,
-              //       decoration: const InputDecoration(
-              //         border: OutlineInputBorder(),
-              //         labelText: 'Edit Your Name',
-              //         hintText: 'Enter Name Here',
-              //       ),
-              //     ),
-              //     TextButton(
-              //       onPressed: () {},
-              //       child: const Text('Save'),
-              //     )
-              //   ],
-              // ),
-              // TextField(
-              //   controller: nameController,
-              //   decoration: const InputDecoration(
-              //     border: OutlineInputBorder(),
-              //     labelText: 'Edit Your Name',
-              //     hintText: 'Enter Name Here',
-              //   ),
-              // ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     _user.doc(user.currentUser!.uid).set({
-              //       "name": nameController.text.trim(),
-              //     });
-              //     nameController.clear();
-              //   },
-              //   child: const Text("Save"),
-              // ),
+              
               const SizedBox(
                 height: 50,
               ),

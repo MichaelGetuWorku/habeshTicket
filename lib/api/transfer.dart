@@ -23,7 +23,7 @@ Future<Transfer> transferCoin(accountNum, amount) async {
     body: body,
   );
 
-  print(response.body);
+  // print(response.body);
 
   if (response.statusCode == 200 || response.statusCode == 400) {
     return Transfer.fromJson(jsonDecode(response.body));

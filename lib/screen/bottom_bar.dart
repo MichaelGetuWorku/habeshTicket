@@ -29,7 +29,6 @@ class _BottomBarState extends State<BottomBar> {
     setState(() {
       _selectedIndex = index;
     });
-    // print('Tapped: $_selectedIndex');
   }
 
   @override
@@ -53,11 +52,6 @@ class _BottomBarState extends State<BottomBar> {
             activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
             label: 'Home',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
-          //   activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
-          //   label: 'Search',
-          // ),
           BottomNavigationBarItem(
             icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
             activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),

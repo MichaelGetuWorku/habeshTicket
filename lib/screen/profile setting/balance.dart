@@ -9,7 +9,9 @@ import 'package:login/model/get_tickets.dart';
 import 'package:login/model/get_transactions.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/error_message.dart';
 import 'package:login/utils/fab.dart';
+import 'package:login/utils/loading_widet.dart';
 
 import '../../widgets/commonLayout.dart';
 
@@ -65,11 +67,11 @@ class _ShowBalanceState extends State<ShowBalance> {
                         accountNo: accountNo,
                       );
                     } else if (snapshot.hasError) {
-                      return const Text('Error on getting your balance!');
+                      return const ErrorMessage(
+                        mss: 'your Balance',
+                      );
                     }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const LoadingWidget();
                   },
                 ),
                 const Gap(40),
@@ -173,11 +175,11 @@ class _ShowBalanceState extends State<ShowBalance> {
                         }),
                       );
                     } else if (snapshot.hasError) {
-                      return const Text('Error on getting your Transaction!');
+                      return const ErrorMessage(
+                        mss: 'your Transaction',
+                      );
                     }
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const LoadingWidget();
                   },
                 ),
               ],

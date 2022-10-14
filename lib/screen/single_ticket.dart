@@ -77,7 +77,7 @@ class SingleTicket extends StatelessWidget {
                     height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      // color: Colors.amber,
+                      color: Colors.grey.shade300,
                       image: const DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage("assets/images/stadium.jpg"),
@@ -94,7 +94,7 @@ class SingleTicket extends StatelessWidget {
                               children: [
                                 CircleAvatar(
                                   maxRadius: 40,
-                                  backgroundColor: Colors.transparent,
+                                  backgroundColor: Colors.grey.shade300,
                                   backgroundImage: subType == 'international'
                                       ? NetworkImage(
                                           'https://habesha-stadium.herokuapp.com///get_country_flag?country_id=$homeCountryId')
@@ -122,7 +122,7 @@ class SingleTicket extends StatelessWidget {
                               children: [
                                 CircleAvatar(
                                   maxRadius: 40,
-                                  backgroundColor: Colors.transparent,
+                                  backgroundColor: Colors.grey.shade300,
                                   backgroundImage: subType == 'international'
                                       ? NetworkImage(
                                           'https://habesha-stadium.herokuapp.com///get_country_flag?country_id=$awayCountryId')

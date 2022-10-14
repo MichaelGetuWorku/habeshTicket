@@ -58,7 +58,7 @@ class TicketView extends StatelessWidget {
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '$awayName',
+                                    homeName!,
                                     style: Styles.headLineStyle3.copyWith(
                                       color: Colors.white,
                                     ),
@@ -117,7 +117,7 @@ class TicketView extends StatelessWidget {
                                     height: 20,
                                   ),
                                   Text(
-                                    homeName!,
+                                    awayName!,
                                     style: Styles.headLineStyle3.copyWith(
                                       color: Colors.white,
                                     ),

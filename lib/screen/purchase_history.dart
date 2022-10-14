@@ -2,24 +2,17 @@
 
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:intl/intl.dart';
 import 'package:login/api/get_tickets.dart';
-import 'package:login/api/transfer_ticket.dart';
 import 'package:login/model/get_desc_event.dart';
 import 'package:login/model/get_tickets.dart';
-import 'package:login/screen/generate_qr.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/error_message.dart';
 import 'package:login/utils/fab.dart';
-import 'package:login/widgets/chips.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/widgets/commonLayout.dart';
-import 'package:login/widgets/ticket_view.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 var accountNumController = TextEditingController();
 
@@ -158,16 +151,11 @@ class PurchaseHistoryScreen extends StatelessWidget {
                           }
                         });
                   } else if (snapshot.hasError) {
-                    return const Text('Error');
+                    return const ErrorMessage(
+                      mss: 'your History',
+                    );
                   }
-                  return Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.red,
-                      // leftDotColor: const Color(0xFF1A1A3F),
-                      // rightDotColor: const Color(0xFFEA3799),
-                      size: 50,
-                    ),
-                  );
+                  return const LoadingWidget();
                 },
               ),
               const Gap(40),

@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:login/api/get_event.dart';
 import 'package:login/model/get_event.dart';
 import 'package:login/screen/single_ticket.dart';
+import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/error_message.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/widgets/ticket_view.dart';
 
 class ThisWeekScreen extends StatefulWidget {
@@ -133,18 +135,11 @@ class _events extends StatelessWidget {
             },
           );
         } else if (snapshot.hasError) {
-          return const Center(
-            child: Text(
-              'Error Couldn\'t get ticks check your internet connection or contact our help and support',
-            ),
+          return const ErrorMessage(
+            mss: 'Available Tickets',
           );
         }
-        return Center(
-          child: LoadingAnimationWidget.inkDrop(
-            color: Colors.red,
-            size: 50,
-          ),
-        );
+        return const LoadingWidget();
       },
     );
   }

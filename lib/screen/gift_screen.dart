@@ -6,9 +6,10 @@ import 'package:login/api/get_transfered_tickets.dart';
 import 'package:login/model/get_transfered_tickets.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/error_message.dart';
 import 'package:login/utils/fab.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/widgets/commonLayout.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 var accountNumController = TextEditingController();
 
@@ -133,14 +134,11 @@ class GiftScreen extends StatelessWidget {
                       );
                     }
                   } else if (snapshot.hasError) {
-                    return const Text('Error on our side');
+                    return const ErrorMessage(
+                      mss: 'your Gift History',
+                    );
                   }
-                  return Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.red,
-                      size: 50,
-                    ),
-                  );
+                  return const LoadingWidget();
                 },
               ),
               const Gap(40),

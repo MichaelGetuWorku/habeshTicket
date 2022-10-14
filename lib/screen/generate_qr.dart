@@ -44,7 +44,7 @@ class GenerateScreenState extends State<GenerateScreen> {
     await maps.first.showMarker(
       coords: Coords(latitude, longitude),
       title: widget.stadiumCityName,
-      zoom: 50,
+      zoom: 1000,
     );
   }
 

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:login/screen/signin_with_phone.dart';
 import 'package:flutter/gestures.dart';
+import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/utils/signin.dart';
 import '../controller/auth_controller.dart';
 
@@ -19,6 +21,8 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
+  bool _obscureText2 = true;
+
   bool loading = false;
   bool loading2 = false;
 
@@ -30,13 +34,19 @@ class _SignUpPageState extends State<SignUpPage> {
     });
   }
 
+  void _showPassword2() {
+    setState(() {
+      _obscureText2 = !_obscureText2;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Styles.bgColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -206,16 +216,16 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           child: TextFormField(
                             controller: passwordConfirmController,
-                            obscureText: _obscureText,
+                            obscureText: _obscureText2,
                             decoration: InputDecoration(
                               labelText: 'Confirm Password',
                               prefixIcon: const Icon(
                                 Icons.password,
                               ),
                               suffixIcon: InkWell(
-                                onTap: _showPassword,
+                                onTap: _showPassword2,
                                 child: Icon(
-                                  _obscureText
+                                  _obscureText2
                                       ? Icons.visibility
                                       : Icons.visibility_off,
                                   color: Colors.red,
@@ -261,12 +271,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             const SizedBox(height: 80),
             loading
-                ? Center(
-                    child: LoadingAnimationWidget.inkDrop(
-                      color: Colors.red,
-                      size: 50,
-                    ),
-                  )
+                ? const LoadingWidget()
                 : ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -282,7 +287,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.purple,
+                      primary: Colors.blue.shade400,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 50,
                         vertical: 10,
@@ -337,12 +342,7 @@ class _SignUpPageState extends State<SignUpPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 loading2
-                    ? Center(
-                        child: LoadingAnimationWidget.inkDrop(
-                          color: Colors.red,
-                          size: 50,
-                        ),
-                      )
+                    ? const LoadingWidget()
                     : signin(
                         action: () {
                           setState(() {

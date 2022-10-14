@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login/api/login.dart';
-import 'package:login/model/login.dart';
 import 'package:login/screen/bottom_bar.dart';
 import 'package:login/screen/login_page.dart';
 import 'package:login/screen/verify_email.dart';
+import 'package:login/utils/loading_widet.dart';
 
 class AuthController extends GetxController {
   // the AuthController will be globally available
@@ -148,9 +148,7 @@ class AuthController extends GetxController {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      builder: (context) => const LoadingWidget(),
     );
     try {
       await auth.sendPasswordResetEmail(email: email);
@@ -160,7 +158,6 @@ class AuthController extends GetxController {
         backgroundColor: Colors.redAccent,
         snackPosition: SnackPosition.BOTTOM,
       );
-      // hiding the loding indicatior
       Navigator.of(context).pop();
     } catch (e) {
       Get.snackbar(

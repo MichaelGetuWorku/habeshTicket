@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:login/controller/auth_controller.dart';
 import 'package:http/http.dart' as http;
-import 'package:login/model/get_tickets.dart';
 import 'package:login/model/get_transfered_tickets.dart';
 import 'package:login/utils/const.dart';
 

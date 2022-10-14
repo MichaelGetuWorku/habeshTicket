@@ -14,6 +14,8 @@ import 'package:login/model/get_tickets.dart';
 import 'package:login/screen/generate_qr.dart';
 import 'package:login/utils/app_layout.dart';
 import 'package:login/utils/app_styles.dart';
+import 'package:login/utils/error_message.dart';
+import 'package:login/utils/loading_widet.dart';
 import 'package:login/widgets/chips.dart';
 import 'package:login/widgets/commonLayout.dart';
 import 'package:login/widgets/ticket_view.dart';
@@ -57,38 +59,6 @@ class TicketScreen extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             );
-      // showDialog(
-      //   context: context,
-      //   builder: (BuildContext context) {
-      //     if (error != true) {
-      //       FirebaseFirestore.instance.collection('TicketTransfer').add({
-      //         "userId": FirebaseAuth.instance.currentUser!.uid,
-      //         "ticketId": ticketId,
-      //         "tooAccNum": tooAccNum,
-      //         "lastScannedOn": lastScannedOn,
-      //         "stadiumName": stadiumName,
-      //         "ticketType": ticketType,
-      //         "ticketQr": ticketQr
-      //       });
-      //     }
-      //     return AlertDialog(
-      //       title: error == true
-      //           ? const Text("Error")
-      //           : const Text('Transfer Complete'),
-      //       content: error == true
-      //           ? Text(errorMsg)
-      //           : const Text('Congrats your Transfer was successful!'),
-      //       actions: [
-      //         TextButton(
-      //           child: const Text('Ok'),
-      //           onPressed: () {
-      //             Navigator.of(context).pop();
-      //           },
-      //         ),
-      //       ],
-      //     );
-      //   },
-      // );
     }
 
     void displayBottomSheet(
@@ -364,16 +334,11 @@ class TicketScreen extends StatelessWidget {
                             }
                           });
                     } else if (snapshot.hasError) {
-                      return const Text('Error');
+                      return const ErrorMessage(
+                        mss: 'your Tickets',
+                      );
                     }
-                    return Center(
-                      child: LoadingAnimationWidget.inkDrop(
-                        color: Colors.red,
-                        // leftDotColor: const Color(0xFF1A1A3F),
-                        // rightDotColor: const Color(0xFFEA3799),
-                        size: 50,
-                      ),
-                    );
+                    return const LoadingWidget();
                   },
                 ),
                 const Gap(40),

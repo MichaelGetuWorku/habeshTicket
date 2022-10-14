@@ -7,14 +7,14 @@ import 'package:login/utils/const.dart';
 
 Future<GetLedger> getLedger() async {
   var xAccessToken = AuthController.instance.jwt;
-  print(xAccessToken);
-  Map<String, String> _header = <String, String>{
+  // print(xAccessToken);
+  Map<String, String> header = <String, String>{
     'x-access-token': xAccessToken
   };
 
   final response = await http.post(
     Uri.parse('${baseUrl}get_ledger'),
-    headers: _header,
+    headers: header,
   );
   // print(response.body);
   if (response.statusCode == 200) {
